@@ -41,7 +41,8 @@
     "pg": "^8.5.1",
     "phaser": "^3.53.1",
     "phaser-ce": "^2.16.2",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "ws": "^7.4.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

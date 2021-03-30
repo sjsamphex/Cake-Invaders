@@ -6,6 +6,8 @@
  * keys as environment variables, so that they can still be read by the
  * Node process on process.env
  */
+const ws = require("ws");
+
 try {
   require('../secrets');
 } catch (ex) {
@@ -27,7 +29,16 @@ const init = async () => {
       await db.sync();
     }
     // start listening (and create a 'server' object representing our server)
-    app.listen(PORT, () => console.log(`Mixing it up on port ${PORT}`));
+    const server = app.listen(PORT, () => console.log(`Mixing it up on port ${PORT}`));
+
+    const webSocketServer = new ws.Server({server});
+
+    webSocketServer.on("connection", (socket) => {
+      console.log("connecting");
+      socket.send("testing , hiiii!!")
+    })
+
+
   } catch (ex) {
     console.log(ex);
   }

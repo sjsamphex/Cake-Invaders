@@ -6,6 +6,17 @@
     <title>Manhattan Trail</title>
     <link rel="stylesheet" href="/style.css" />
     <script defer src="/bundle.js"></script>
+    <script>
+
+      const url = window.document.location.origin.replace("http","ws");
+      const socket = new WebSocket(url)
+      // console.log(url)
+      socket.addEventListener("message", (ev) => {
+        const message = ev.data;
+        console.log(message);
+      })
+
+    </script>
   </head>
   <body>
     <div id="app"></div>
